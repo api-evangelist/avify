@@ -1,0 +1,27 @@
+generated: '2026-07-18'
+method: searched
+source: https://avify.com/docs/autenticacion-api
+docs: https://avify.com/docs/autenticacion-api
+summary:
+  types: [apiKey]
+  api_key_in: [header]
+  api_key_names: [api-key]
+  oauth2_flows: []
+  note: >-
+    Avify authenticates every request (GraphQL and REST) with a single API key
+    sent in the api-key header. Bearer tokens are explicitly NOT used. Tokens are
+    generated in the dashboard at app.avify.com under Configuración > Integraciones
+    > API. A token grants full privileges on the account and may be set to expire
+    or never expire; the dashboard displays the token value only once at creation.
+schemes:
+  - name: ApiKeyAuth
+    type: apiKey
+    in: header
+    parameter_name: api-key
+    applies_to: [https://api.avify.com/graphql, https://api.avify.com/api/v1]
+    credential_management: https://app.avify.com/dashboard/settings/integrations-new
+    sources: [https://avify.com/docs/autenticacion-api]
+test:
+  operation: 'GET https://api.avify.com/api/v1/test  (or GraphQL query { apiTest })'
+  success_example: '{"ok":"ok"}'
+  auth_failure_example: '{"error":{"code":"A-34","displayMessage":"Usuario no autenticado","lang":"es"},"status":401}'
