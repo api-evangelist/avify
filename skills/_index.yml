@@ -1,0 +1,12 @@
+generated: '2026-07-18'
+method: generated
+source: graphql/avify-graphql-operations.yml
+skills:
+  - file: avify-create-order.md
+    name: Create an Avify order from a cart
+    api: graphql/avify-graphql-operations.yml
+    operations: [addCartProduct, updateCartProduct, cartTotals, createOrder, paymentMethods]
+  - file: avify-manage-inventory.md
+    name: Manage Avify products and inventory
+    api: graphql/avify-graphql-operations.yml
+    operations: [products, product, inventory, storeLocations, createBaseProduct, bulkUpdateStock]

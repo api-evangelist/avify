@@ -1,0 +1,19 @@
+generated: '2026-07-18'
+method: searched
+source: https://avify.com/docs/introduccion-api
+# Only lifecycle facts actually documented by Avify are recorded. No public status
+# page, deprecation policy, or SLA page was found (status.avify.com does not resolve;
+# the docs do not publish a versioning/deprecation policy).
+versioning:
+  scheme: uri-path
+  current: v1
+  rest_prefix: /api/v1
+  graphql_object_versioning: OrderV1 / CustomerV1 / ProductV1 suffixed domain types
+  docs: https://avify.com/docs/introduccion-api
+deprecation:
+  policy_url: null
+  sunset_header: unknown
+status_page: null   # status.avify.com does not resolve
+sla:
+  url: null
+docs_last_updated: '2025-09-06'   # "Última actualización" on the API reference pages

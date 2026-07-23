@@ -1,0 +1,41 @@
+generated: '2026-07-18'
+method: searched
+source: https://www.npmjs.com/search?q=avify
+# Packages found on public registries. Avify does not link official SDKs from its
+# docs; the packages below were discovered on npm. The @avify scope is owned by
+# the avify-com GitHub org (internal tooling, not API client SDKs). avify-client
+# is a JavaScript client library for the Avify API published under the
+# bananacode-co studio org (the original engineering studio) and last updated in
+# 2022 — first-party status is not confirmed by the docs, so official is left false.
+packages:
+  - language: javascript
+    registry: npm
+    name: avify-client
+    url: https://www.npmjs.com/package/avify-client
+    install: npm install avify-client
+    version: 0.0.24
+    repository: https://github.com/bananacode-co/avify-nodejs-client
+    role: api-client
+    official: false
+    note: "'Avify Javascript Client Library' (axios + jsencrypt); legacy, last published 2022."
+  - language: javascript
+    registry: npm
+    name: "@avify/aws-env"
+    url: https://www.npmjs.com/package/@avify/aws-env
+    install: npm install @avify/aws-env
+    repository: https://github.com/avify-com/aws-env
+    role: internal-tooling
+    official: true
+    note: Downloads a .env file from AWS S3. Not an API client SDK.
+  - language: javascript
+    registry: npm
+    name: "@avify/webpack-graphql-ts-transform"
+    url: https://www.npmjs.com/package/@avify/webpack-graphql-ts-transform
+    install: npm install @avify/webpack-graphql-ts-transform
+    repository: https://github.com/avify-com/webpack-graphql-ts-transform
+    role: internal-tooling
+    official: true
+    note: Compiles GraphQL into TypeScript files. Not an API client SDK.
+registries_checked:
+  - {registry: npm, result: found}
+  - {registry: pypi, result: none}     # https://pypi.org/pypi/avify/json -> 404

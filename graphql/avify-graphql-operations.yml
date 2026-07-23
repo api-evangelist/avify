@@ -1,0 +1,88 @@
+generated: '2026-07-18'
+method: searched
+source: https://avify.com/docs/introduccion-api
+# Avify's primary developer API is GraphQL. This catalog captures the operations
+# documented verbatim in the API reference. Full SDL/introspection is not
+# published; only the documented operation signatures below are recorded here
+# (no invented types or fields).
+endpoints:
+  production_graphql: https://api.avify.com/graphql
+  sandbox_graphql: https://sandboxapi.avify.co/graphql
+  production_rest: https://api.avify.com/api/v1
+  sandbox_rest: https://sandboxapi.avify.co/api/v1
+authentication:
+  scheme: apiKey
+  in: header
+  name: api-key
+  note: Avify does not use Bearer tokens; send the api-key header on every request.
+queries:
+  - name: apiTest
+    title: Verificar Conexión
+    signature: 'apiTest: String'
+    description: Connectivity/auth check. Returns a string confirming the store context.
+  - name: products
+    title: Listar Productos
+    signature: 'products(pageNum: Int, pageSize: Int, filter: ...): paginated products'
+    description: >-
+      Paginated list of products with variants, options, categories and inventory.
+      Use selectMode "S" for a simplified response; omit locationId for global inventory.
+  - name: product
+    title: Obtener Producto por SKU
+    signature: 'product(sku: String): Product'
+    description: Fetch a single product by SKU.
+  - name: inventory
+    title: Consultar Inventario
+    signature: 'inventory(sku: String!): { base children }'
+    description: >-
+      Inventory for a SKU, with base and child stock broken down by location
+      (locationId, qty, reservations, reorderPoint, lowStockAlertEnabled).
+  - name: storeLocations
+    title: Obtener Ubicaciones
+    signature: 'storeLocations: [StoreLocation]'
+    description: List store locations (id, name, address, city, countryCode, isDefault, coordinates).
+  - name: cartTotals
+    title: Obtener Totales del Carrito
+    signature: 'cartTotals(sessionCookie: String!, cartId: String!): CartTotals'
+    description: Subtotal, tax, shipping, discount, total, currency and line items for a cart.
+  - name: orders
+    title: Listar Órdenes
+    signature: 'orders(...): [OrderV1]'
+    description: List orders in the system (OrderV1 objects), identified by order id.
+  - name: paymentMethods
+    title: Métodos de Pago
+    signature: 'paymentMethods: [{ code }]'
+    description: Available payment method codes.
+mutations:
+  - name: createBaseProduct
+    title: Crear Producto
+    signature: 'createBaseProduct(createBaseProductInput: CreateBaseProductInput!, stock: CreateStockInput): Product'
+    description: Create a base product, optionally seeding stock.
+  - name: bulkUpdateStock
+    title: Actualización Masiva de Stock
+    signature: 'bulkUpdateStock(stocks: [StockInput!], reindexEvent: ReindexEventInput, instantReindex: Boolean)'
+    description: Bulk update stock levels, with optional reindex event.
+  - name: updateStoreLocation
+    title: Actualizar Ubicación
+    signature: 'updateStoreLocation(updateStoreLocationInput: UpdateStoreLocationInput!): StoreLocation'
+    description: Update a store location.
+  - name: addCartProduct
+    title: Agregar Producto al Carrito
+    signature: 'addCartProduct(products: [CreateOrderProductInput]!, sessionCookie: String!, cartId: String!)'
+    description: Add product(s) to a cart session.
+  - name: updateCartProduct
+    title: Actualizar Producto del Carrito
+    signature: 'updateCartProduct(products: [UpdateOrderProductInput]!, sessionCookie: String!, cartId: String!)'
+    description: Update product(s) in a cart session.
+  - name: createOrder
+    title: Crear Orden
+    signature: 'createOrder(...): OrderV1'
+    description: >-
+      Create an order (OrderV1). The Order object drives inventory reductions and
+      enables payment. Supports a metadata object (max 100kb, string/boolean/number values).
+rest_endpoints:
+  - method: GET
+    path: /api/v1/test
+    description: Connectivity/auth test. 200 {"ok":"ok"} on success; 401 error envelope otherwise.
+  - method: POST
+    path: /api/v1/stores/products/upload/image
+    description: Upload a product image.

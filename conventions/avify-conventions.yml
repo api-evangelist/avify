@@ -1,0 +1,54 @@
+generated: '2026-07-18'
+method: searched
+source: https://avify.com/docs/introduccion-api
+# Cross-cutting request/response semantics for the Avify API, from the docs and
+# observed live responses. Only conventions actually documented/observed are recorded.
+authentication:
+  style: api-key-header
+  header: api-key
+  bearer: false
+  see: authentication/avify-authentication.yml
+pagination:
+  style: page-number
+  params:
+    - pageNum   # Int, 1-based page number (GraphQL products query)
+    - pageSize  # Int, page size
+  note: The products query is paginated via pageNum/pageSize arguments.
+response_shaping:
+  select_mode:
+    param: selectMode
+    values:
+      S: Simplified response payload
+    note: Pass selectMode "S" to products for a simplified response.
+  location_scoping:
+    param: locationId
+    note: Omit locationId to get global inventory; pass it to scope to a location.
+error_envelope:
+  shape: custom
+  observed: '{"error":{"code":"A-34","developerMessage":"","displayMessage":"Usuario no autenticado","lang":"es"},"status":401}'
+  fields:
+    - error.code            # machine code, e.g. A-34, AT-145
+    - error.developerMessage  # developer-facing detail (may be empty)
+    - error.displayMessage    # end-user message, localized
+    - error.lang              # language of displayMessage, e.g. es
+    - status                  # HTTP status mirrored in body
+  see: errors/avify-error-codes.yml
+metadata:
+  supported: true
+  note: >-
+    Orders created via the API accept a metadata object (max 100kb) whose values
+    must be string, boolean, float or int.
+idempotency:
+  supported: false
+  note: No idempotency-key mechanism is documented by Avify.
+versioning:
+  scheme: uri-path
+  current: v1
+  rest_prefix: /api/v1
+  graphql_object_versioning: OrderV1 / CustomerV1 / ProductV1 suffixed schema types
+  see: lifecycle/avify-lifecycle.yml
+rate_limiting:
+  documented: false
+  note: >-
+    An overflow-fee concept exists on orders (isOverflowOrder / overflowFee) tied
+    to plan order limits, but no HTTP rate-limit signaling headers are documented.

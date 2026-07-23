@@ -1,0 +1,29 @@
+generated: '2026-07-18'
+method: searched
+source: https://avify.com/docs/autenticacion-api
+# Avify returns a custom error envelope (not RFC 9457). Codes below are those
+# documented in the API reference or observed live against the API; Avify does
+# not publish a full error-code registry, so this is the documented/observed subset.
+format: custom
+envelope:
+  example: '{"error":{"code":"AT-145","developerMessage":"","displayMessage":"El token de API utilizado no es válido. Por favor revise el dato ingresado.","lang":"es"},"status":401}'
+  fields:
+    code: Machine-readable error code (e.g. A-34, AT-145)
+    developerMessage: Developer-facing message (may be empty)
+    displayMessage: Localized end-user message
+    lang: Language of displayMessage (e.g. es)
+    status: HTTP status code, mirrored in the body
+errors:
+  - code: A-34
+    status: 401
+    displayMessage: Usuario no autenticado
+    meaning: Request was not authenticated (missing/invalid api-key header).
+    remediation: Send a valid api-key header on the request.
+    source: observed  # live GET https://api.avify.com/api/v1/test
+  - code: AT-145
+    status: 401
+    displayMessage: >-
+      El token de API utilizado no es válido. Por favor revise el dato ingresado.
+    meaning: The API token used is not valid.
+    remediation: Verify the api-key token value; regenerate it in the dashboard if needed.
+    source: docs  # https://avify.com/docs/autenticacion-api

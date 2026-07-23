@@ -1,0 +1,53 @@
+generated: '2026-07-18'
+method: derived
+status: candidate
+source: graphql/avify-graphql-operations.yml
+# No official Avify MCP server was found. This is a CANDIDATE tool list derived
+# from the documented GraphQL operations, one tool per operation.
+server:
+  name: avify
+  transport: http
+  url: null   # no published MCP server
+tools:
+  - name: api_test
+    description: Verify API connectivity and token/store context.
+    source_operation: graphql/avify-graphql-operations.yml#apiTest
+  - name: list_products
+    description: List products (paginated) with variants, categories and inventory.
+    source_operation: graphql/avify-graphql-operations.yml#products
+  - name: get_product
+    description: Get a single product by SKU.
+    source_operation: graphql/avify-graphql-operations.yml#product
+  - name: get_inventory
+    description: Get inventory for a SKU, broken down by location.
+    source_operation: graphql/avify-graphql-operations.yml#inventory
+  - name: list_store_locations
+    description: List store locations.
+    source_operation: graphql/avify-graphql-operations.yml#storeLocations
+  - name: get_cart_totals
+    description: Get subtotal/tax/shipping/total and items for a cart.
+    source_operation: graphql/avify-graphql-operations.yml#cartTotals
+  - name: list_orders
+    description: List orders in the system.
+    source_operation: graphql/avify-graphql-operations.yml#orders
+  - name: list_payment_methods
+    description: List available payment method codes.
+    source_operation: graphql/avify-graphql-operations.yml#paymentMethods
+  - name: create_base_product
+    description: Create a base product, optionally seeding stock.
+    source_operation: graphql/avify-graphql-operations.yml#createBaseProduct
+  - name: bulk_update_stock
+    description: Bulk update stock levels.
+    source_operation: graphql/avify-graphql-operations.yml#bulkUpdateStock
+  - name: update_store_location
+    description: Update a store location.
+    source_operation: graphql/avify-graphql-operations.yml#updateStoreLocation
+  - name: add_cart_product
+    description: Add product(s) to a cart session.
+    source_operation: graphql/avify-graphql-operations.yml#addCartProduct
+  - name: update_cart_product
+    description: Update product(s) in a cart session.
+    source_operation: graphql/avify-graphql-operations.yml#updateCartProduct
+  - name: create_order
+    description: Create an order (drives inventory reduction and payment).
+    source_operation: graphql/avify-graphql-operations.yml#createOrder

@@ -1,0 +1,67 @@
+generated: '2026-07-18'
+method: derived
+source: https://avify.com/docs/ordenes-v1-api
+# Entity-relationship graph derived from Avify's documented OrderV1 TypeScript
+# schema and the GraphQL operation selection sets. Versioned domain objects use
+# a V1 suffix (OrderV1, CustomerV1, ProductV1).
+entities:
+  - name: OrderV1
+    id_field: id
+    id_type: string
+    description: Order object; drives inventory reductions and enables payment.
+    key_fields: [status, channel, channelPublicId, created, updated, costs, payment]
+    status_values: [complete, pending, processing, canceled, closed]
+    channels: [avify, wordpress, facebook, instagram, whatsapp]
+  - name: CustomerV1
+    id_field: id
+    description: Customer assigned to an order (email, firstName, lastName, telephone).
+  - name: ProductV1
+    id_field: sku
+    description: Product with variants, options, categories and inventory.
+  - name: StoreLocation
+    id_field: id
+    description: Physical/store location with address and coordinates.
+  - name: Cart
+    id_field: cartId
+    description: Cart session (cartId + sessionCookie) that totals into an order.
+  - name: Store
+    id_field: uuid
+    description: Merchant store (name, uuid) that owns products, orders and locations.
+relationships:
+  - from: OrderV1
+    to: CustomerV1
+    kind: has_one
+    via: customer
+  - from: OrderV1
+    to: ProductV1
+    kind: has_many
+    via: products
+  - from: OrderV1
+    to: Store
+    kind: belongs_to
+    via: avify.store
+  - from: OrderV1
+    to: OrderShippingV1
+    kind: has_one
+    via: shipping
+  - from: OrderV1
+    to: OrderBillingV1
+    kind: has_one
+    via: billing
+  - from: OrderV1
+    to: Payment
+    kind: has_one
+    via: payment
+  - from: ProductV1
+    to: StoreLocation
+    kind: has_many
+    via: inventory.stockByLocation.locationId
+  - from: Cart
+    to: ProductV1
+    kind: has_many
+    via: products
+embedded_objects:
+  - OrderShippingV1   # extends OrderAdressV1 + hasGeneratedDocument, document
+  - OrderBillingV1    # extends OrderAdressV1 + government.documents[]
+  - Payment           # method, status, wasRefunded, refund, receipt
+  - Cost              # subtotal, total, tax, shipping, deductions, currencies

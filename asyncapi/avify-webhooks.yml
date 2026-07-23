@@ -1,0 +1,36 @@
+generated: '2026-07-18'
+method: searched
+source: https://avify.com/docs/webhooks-api
+type: Webhooks
+# Avify documents order webhooks. No AsyncAPI document is published; this captures
+# the documented webhook catalog verbatim. Delivery can take up to ~1 minute
+# depending on event type.
+configuration:
+  method: request-via-support
+  note: >-
+    Webhook endpoints are configured on request through the in-platform support
+    chat; a partners channel on Discord is also available (requested via the
+    platform chat). No self-serve webhook registration UI/API is documented.
+delivery:
+  latency: up to ~1 minute depending on event type
+  signature_verification: not documented
+payload:
+  note: >-
+    The payload is the object defined by the API (OrderV1) with extra attributes
+    added, e.g. event and forwarded.
+  envelope_example: '{"event":"create_order","forwarded":true, ...OrderV1}'
+  added_fields:
+    - event      # the event name, e.g. create_order / update_order
+    - forwarded  # boolean, true on forwarded webhook deliveries
+events:
+  - name: create_order
+    title: Creación de orden
+    object: OrderV1
+    description: >-
+      Fires when an order is created, usually identifiable by its pending status.
+  - name: update_order
+    title: Actualización de orden
+    object: OrderV1
+    description: >-
+      Fires when an order is updated, e.g. a payment is confirmed or the order
+      moves out of its initial state / is completed.

@@ -1,0 +1,35 @@
+# Avify
+
+> Avify is a WhatsApp-first commerce and CRM platform for small and medium-sized businesses (PYMEs) across Latin America. It connects WhatsApp/Instagram/Messenger conversations to inventory, an online store, POS, payments, shipping and electronic invoicing. Developers integrate via a GraphQL API and a REST API (base path /api/v1), authenticated with an api-key header.
+
+## APIs
+- [Avify GraphQL API](https://api.avify.com/graphql): Primary developer API — products, inventory, store locations, carts, orders, payment methods.
+- [Avify REST API v1](https://api.avify.com/api/v1): Connectivity test and product media upload.
+- [GraphQL Sandbox](https://sandboxapi.avify.co/graphql): Hosted sandbox for testing.
+
+## Docs
+- [API Introduction](https://avify.com/docs/introduccion-api): Overview of the GraphQL + REST APIs, endpoints and auth.
+- [Authentication](https://avify.com/docs/autenticacion-api): api-key header auth (no Bearer); token management in the dashboard.
+- [Orders V1](https://avify.com/docs/ordenes-v1-api): The OrderV1 object model.
+- [Webhooks](https://avify.com/docs/webhooks-api): create_order and update_order events (OrderV1).
+- [Getting Started](https://avify.com/docs/guia-inicio-rapido): Quick-start guide.
+- [Integrations Guide](https://avify.com/docs/guia-de-integraciones): Integration specifics.
+- [Developer Portal / Docs](https://avify.com/docs): Full documentation home.
+
+## Artifacts
+- [Authentication profile](authentication/avify-authentication.yml)
+- [API conventions](conventions/avify-conventions.yml)
+- [Error codes](errors/avify-error-codes.yml)
+- [Webhooks catalog](asyncapi/avify-webhooks.yml)
+- [Sandbox](sandbox/avify-sandbox.yml)
+- [Data model](data-model/avify-data-model.yml)
+- [GraphQL operations](graphql/avify-graphql-operations.yml)
+- [Agent skills](skills/_index.yml)
+
+## Company
+- [Website](https://avify.com)
+- [Pricing](https://avify.com/pricing)
+- [Blog](https://avify.com/blog)
+- [Terms of Service](https://avify.com/terminos-y-condiciones)
+- [Privacy Policy](https://avify.com/politica-de-privacidad)
+- [Sign Up](https://app.avify.com/auth/register)

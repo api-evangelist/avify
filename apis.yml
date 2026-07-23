@@ -1,25 +1,149 @@
 aid: avify
 name: Avify
-description: Avify is a company surfaced as a portfolio company of 500-global and added to the API Evangelist
-  network as a stub for enrichment. This profile is a lead awaiting the enrichment pipeline.
+description: >-
+  Avify is a WhatsApp-first commerce and CRM platform for small and medium-sized
+  businesses (PYMEs) across Latin America. It centralizes conversations from
+  WhatsApp, Instagram and Messenger and connects them to a real-time inventory
+  system, an online store and catalog, a point-of-sale for physical stores,
+  conversational marketing with AI agents, payment processing, shipping
+  integrations and electronic invoicing. For developers, Avify exposes a GraphQL
+  API and a REST API (base path /api/v1) authenticated with an api-key header,
+  covering products, inventory, store locations, carts, orders and payment
+  methods, plus order webhooks for create/update events. A public GraphQL
+  sandbox is available for testing before going live.
 url: https://raw.githubusercontent.com/api-evangelist/avify/refs/heads/main/apis.yml
 x-type: company
 x-source: vc-portfolio
 x-backed-by:
 - 500-global
-x-tier: stub
-x-tier-reason: portfolio-lead
+x-tier: profiled
+x-tier-reason: enriched-from-public-developer-surface
+accessModel:
+  pricing: unknown
+  onboarding: self-serve
+  trial: false
+  try_now: false
+  public: false
+  label: Self-serve signup
+  confidence: medium
+  source:
+  - authentication
+  generated: '2026-07-22'
+  method: derived
 specificationVersion: '0.20'
 created: '2026-07-17'
-modified: '2026-07-17'
+modified: '2026-07-18'
+image: https://avify.com/images/og.png
 tags:
 - Company
-apis: []
+- Commerce
+- eCommerce
+- CRM
+- WhatsApp
+- Conversational Commerce
+- Inventory
+- Point of Sale
+- Payments
+- Orders
+- GraphQL
+- Latin America
+- SMB
+apis:
+- name: Avify GraphQL API
+  description: >-
+    Avify's primary developer API. A GraphQL endpoint covering products,
+    inventory, store locations, carts, orders and payment methods. Authenticated
+    with the api-key header. A public GraphQL sandbox is available.
+  humanURL: https://avify.com/docs/introduccion-api
+  baseURL: https://api.avify.com/graphql
+  tags:
+  - GraphQL
+  - Commerce
+  - Inventory
+  - Orders
+  properties:
+  - type: GraphQL
+    url: https://avify.com/docs/introduccion-api
+  - type: Documentation
+    url: https://avify.com/docs/introduccion-api
+- name: Avify REST API v1
+  description: >-
+    Avify's REST API (base path /api/v1). Includes a connectivity test endpoint
+    and store/product media upload. Authenticated with the api-key header.
+  humanURL: https://avify.com/docs/introduccion-api
+  baseURL: https://api.avify.com/api/v1
+  tags:
+  - REST
+  - Commerce
+  properties:
+  - type: Documentation
+    url: https://avify.com/docs/introduccion-api
 maintainers:
 - FN: Kin Lane
   email: kin@apievangelist.com
 - FN: APIs.json
   email: info@apis.io
 common:
+- type: DomainSecurity
+  url: security/avify-domain-security.yml
 - type: Website
   url: https://avify.com
+- type: DeveloperPortal
+  url: https://avify.com/docs
+- type: Documentation
+  url: https://avify.com/docs
+- type: APIReference
+  url: https://avify.com/docs/introduccion-api
+- type: GettingStarted
+  url: https://avify.com/docs/guia-inicio-rapido
+- type: Authentication
+  url: https://avify.com/docs/autenticacion-api
+- type: Support
+  url: https://avify.com/docs/soporte-y-recursos-adicionales
+- type: Blog
+  url: https://avify.com/blog
+- type: GitHubOrganization
+  url: https://github.com/avify-com
+- type: Pricing
+  url: https://avify.com/pricing
+- type: SignUp
+  url: https://app.avify.com/auth/register
+- type: Login
+  url: https://app.avify.com/auth/login
+- type: TermsOfService
+  url: https://avify.com/terminos-y-condiciones
+- type: PrivacyPolicy
+  url: https://avify.com/politica-de-privacidad
+- type: GraphQL
+  url: graphql/avify-graphql-operations.yml
+- type: Authentication
+  url: authentication/avify-authentication.yml
+- type: Conventions
+  url: conventions/avify-conventions.yml
+- type: ErrorCatalog
+  url: errors/avify-error-codes.yml
+- type: Webhooks
+  url: asyncapi/avify-webhooks.yml
+- type: Sandbox
+  url: sandbox/avify-sandbox.yml
+- type: DataModel
+  url: data-model/avify-data-model.yml
+- type: Packages
+  url: packages/avify-packages.yml
+- type: MCPServer
+  url: mcp/avify-mcp.yml
+- type: LLMsTxt
+  url: llms/avify-llms.txt
+- type: WellKnown
+  url: well-known/avify-well-known.yml
+- type: Lifecycle
+  url: lifecycle/avify-lifecycle.yml
+- type: Conformance
+  url: conformance/avify-conformance.yml
+- type: AgentSkill
+  url: skills/_index.yml
+x-enrichment:
+  date: '2026-07-19'
+  status: backfilled
+  pass: local-v1
+  note: backfilled from .gitignore signal + verified work evidence

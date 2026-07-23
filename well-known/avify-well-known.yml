@@ -1,0 +1,15 @@
+generated: '2026-07-18'
+method: probed
+# Probed the /.well-known/ discovery surface on Avify's website and API hosts.
+# None are published (all 404 / absent). Recorded as valid negative results.
+hosts:
+  - host: https://avify.com
+    documents:
+      - {path: /.well-known/security.txt, status: 404}
+  - host: https://api.avify.com
+    documents:
+      - {path: /.well-known/security.txt, status: 404}
+      - {path: /.well-known/openid-configuration, status: 404}
+  - host: https://sandboxapi.avify.co
+    documents:
+      - {path: /.well-known/security.txt, status: 404}

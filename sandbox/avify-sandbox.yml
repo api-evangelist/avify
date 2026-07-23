@@ -1,0 +1,21 @@
+generated: '2026-07-18'
+method: searched
+source: https://avify.com/docs/introduccion-api
+# Avify publishes a hosted GraphQL sandbox for testing before going live.
+sandbox:
+  graphql_endpoint: https://sandboxapi.avify.co/graphql
+  rest_endpoint: https://sandboxapi.avify.co/api/v1
+  console: GraphQL Sandbox ("Abrir GraphQL Sandbox" / "Probar en Sandbox" in the docs)
+  authentication:
+    scheme: apiKey
+    header: api-key
+    note: Same api-key header as production; use a token from your account.
+test_operations:
+  - operation: 'query { apiTest }'
+    example_response: '{"data":{"apiTest":"API is working! Store: Mi Tienda (store_id: 12345)"}}'
+    note: Verifies the token is configured and the store context resolves.
+  - operation: 'GET /api/v1/test'
+    example_response: '{"ok":"ok"}'
+notes:
+  - The docs' sandbox response uses the illustrative store "Mi Tienda" (store_id 12345).
+  - Live/sandbox separation is by host (sandboxapi.avify.co vs api.avify.com), not by key prefix.
