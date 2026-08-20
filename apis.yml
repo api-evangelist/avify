@@ -37,6 +37,20 @@ image: https://avify.com/images/og.png
 tags:
 - Company
 - Commerce
+- E-Commerce
+- CRM
+- WhatsApp
+- Conversational Commerce
+- Inventory
+- Point-of-Sale
+- Payments
+- Order
+- GraphQL
+- Latin America
+- SMB
+tags_raw:
+- Company
+- Commerce
 - eCommerce
 - CRM
 - WhatsApp
@@ -57,6 +71,11 @@ apis:
   humanURL: https://avify.com/docs/introduccion-api
   baseURL: https://api.avify.com/graphql
   tags:
+  - GraphQL
+  - Commerce
+  - Inventory
+  - Order
+  tags_raw:
   - GraphQL
   - Commerce
   - Inventory
